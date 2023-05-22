@@ -61,12 +61,6 @@ public class Main {
 				
 				if (idList.contains(choosenId)) {
 					
-					List<String> languagesList = new ArrayList<>();
-					String nation = null;
-					String year = null;
-					String population = null;
-					String gdp = null;
-					
 					
 					String languagesQuery = "SELECT countries.name, languages.language\r\n"
 							+ "FROM countries\r\n"
@@ -80,64 +74,9 @@ public class Main {
 						
 						ps2.setInt(1, choosenId);
 						
-						try(ResultSet rs2 = ps2.executeQuery()){
-							
-							while(rs2.next()) {
-								nation = rs2.getString(1);
-								final String language = rs2.getString(2);
-								languagesList.add(language);
-							}
-							
-						}
-						
-						
 					} catch(SQLException ex) {
 						System.out.println("Query Error");
 					}
-					
-					String detailsQuery = "SELECT * "
-							+ "FROM country_stats "
-							+ "WHERE country_id = ? "
-							+ "GROUP BY country_stats.`year` "
-							+ "ORDER BY country_stats.`year` DESC "
-							+ "LIMIT 1 ";
-					
-					try(PreparedStatement ps3 = con.prepareStatement(detailsQuery)){
-						
-						ps3.setInt(1, choosenId);
-						
-						try(ResultSet rs3 = ps3.executeQuery()){
-							
-							while(rs3.next()) {
-								year = rs3.getString(2);
-								population = rs3.getString(3);
-								gdp = rs3.getString(4);
-							}
-							
-						}
-						
-						
-					} catch(SQLException ex) {
-						System.out.println("Query Error");
-					}
-					
-					String languages = "";
-					
-					for(int i = 0; i < languagesList.size(); i++) {
-						
-						if(i == languagesList.size() - 1) {
-							languages += languagesList.get(i) + ".";
-						} else {
-							languages += languagesList.get(i) + ", ";
-						}
-						
-					}
-					
-					System.out.println("Dettagli per " + nation);
-					System.out.println("languages: " + languages);
-					System.out.println("Most recent info: " + year);
-					System.out.println("Population: " + population);
-					System.out.println("GDP: " + gdp);
 					
 					
 				} else {

@@ -121,20 +121,8 @@ public class Main {
 						System.out.println("Query Error");
 					}
 					
-					String languages = "";
-					
-					for(int i = 0; i < languagesList.size(); i++) {
-						
-						if(i == languagesList.size() - 1) {
-							languages += languagesList.get(i) + ".";
-						} else {
-							languages += languagesList.get(i) + ", ";
-						}
-						
-					}
-					
 					System.out.println("Dettagli per " + nation);
-					System.out.println("languages: " + languages);
+					System.out.println("languages: " + languagesList);
 					System.out.println("Most recent info: " + year);
 					System.out.println("Population: " + population);
 					System.out.println("GDP: " + gdp);
