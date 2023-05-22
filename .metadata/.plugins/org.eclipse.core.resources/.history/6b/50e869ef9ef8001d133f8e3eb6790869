@@ -29,14 +29,14 @@ public class Main {
 				
 				try(ResultSet rs = ps.executeQuery()) {
 					
-					System.out.println("Nazione - ID - Regione - Continente");
+					System.out.println("Nazione ID Regione Continente");
 					
 					while(rs.next()) {
 						final String countryName = rs.getString(1);
 						final int countryId = rs.getInt(2);
 						final String regionName = rs.getString(3);
 						final String continentName = rs.getString(4);
-						System.out.println(countryName + " - " + countryId + " - " + regionName + " - " + continentName);
+						System.out.println(countryName + " " + countryId + " " + regionName + " " + continentName);
 					}
 					
 				} catch (SQLException ex) {

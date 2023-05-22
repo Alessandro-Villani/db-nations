@@ -16,27 +16,15 @@ public class Main {
 		
 		try(Connection con = DriverManager.getConnection(url, user, password)) {
 
-			String sql = "SELECT countries.name, countries.country_id, regions.name, continents.name "
-					+ "FROM countries "
-					+ "JOIN regions "
-					+ "ON countries.region_id = regions.region_id "
-					+ "JOIN continents "
-					+ "ON regions.continent_id = continents.continent_id "
-					+ "ORDER BY countries.name;";
-			
+			String sql = "SELECT * FROM countries";
 			
 			try(PreparedStatement ps = con.prepareStatement(sql)){
 				
 				try(ResultSet rs = ps.executeQuery()) {
 					
-					System.out.println("Nazione - ID - Regione - Continente");
-					
 					while(rs.next()) {
-						final String countryName = rs.getString(1);
-						final int countryId = rs.getInt(2);
-						final String regionName = rs.getString(3);
-						final String continentName = rs.getString(4);
-						System.out.println(countryName + " - " + countryId + " - " + regionName + " - " + continentName);
+						final String name = rs.getString(2);
+						System.out.println(name);
 					}
 					
 				} catch (SQLException ex) {
