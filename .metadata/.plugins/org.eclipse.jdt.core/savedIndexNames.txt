@@ -1,0 +1,5 @@
+INDEX VERSION 1.132+C:\java_projects\db-nations\.metadata\.plugins\org.eclipse.jdt.core
+992131805.index
+4063413605.index
+978676643.index
+1865797976.index
